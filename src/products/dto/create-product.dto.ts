@@ -30,14 +30,4 @@ export class CreateProductDto {
 
     @IsIn(['men','women','kid','unisex'])
     gender: string;
-
-    @BeforeInsert()
-    checkSlugInsert() { //Verifica que lo que va a ser insertado se esta insertando correctamente
-        if (!this.slug) {
-            this.slug = this.title;
-        }
-        this.slug = this.slug.toLowerCase()
-            .replaceAll(' ', '-')
-            .replaceAll("'", ""); 
-    }
 }

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
@@ -16,7 +17,8 @@ import { ProductsModule } from './products/products.module';
       autoLoadEntities: true, //Permite cargar dependencias de entidades automáticamente cuando se importan módulos
       synchronize: true, //Sincroniza el esquema de la base de datos con las entidades definidas en el código. No se recomienda usar en producción, ya que puede causar pérdida de datos.
     }),
-    ProductsModule, 
+    ProductsModule,
+    CommonModule, 
   ],
   controllers: [],
   providers: [],
