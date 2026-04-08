@@ -18,8 +18,8 @@ export class ProductsController {
   }
 
   @Get(':term') // el term dentro del get
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.productsService.findOne(id);
+  findOne(@Param('term') term: string) {
+    return this.productsService.findOnePlain(term);
     //el 'term' dentro del get
   }
 

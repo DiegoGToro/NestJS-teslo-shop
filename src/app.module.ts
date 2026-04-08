@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { CommonModule } from './common/common.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [ConfigModule.forRoot(),
@@ -18,7 +19,8 @@ import { CommonModule } from './common/common.module';
       synchronize: true, //Sincroniza el esquema de la base de datos con las entidades definidas en el código. No se recomienda usar en producción, ya que puede causar pérdida de datos.
     }),
     ProductsModule,
-    CommonModule, 
+    CommonModule,
+    SeedModule, 
   ],
   controllers: [],
   providers: [],

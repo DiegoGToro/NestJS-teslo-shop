@@ -4,41 +4,41 @@ import { ProductImage } from "./product-image.entity";
 @Entity()
 export class Product {
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
 
     @Column('text',{unique: true})
-    title: string;
+    title?: string;
 
     @Column('numeric', {})
-    price: number;
+    price?: number;
 
     @Column('text', {nullable: true})
-    description: string;
+    description?: string;
 
-    @Column('text',{unique: true, nullable: true})
-    slug: string;
+    @Column('text', { unique: true, nullable: true })
+    slug?: string;
     
-    @Column('int', {nullable: true})
-    stock: number;
+    @Column('int', { nullable: true })
+    stock?: number;
 
-    @Column('text', {array: true})
-    sizes: string[];
+    @Column('text', { array: true })
+    sizes?: string[];
 
     @Column('text')
-    gender: string;
+    gender?: string;
 
     //tags
-    @Column('text',{
+    @Column('text', {
         array: true,
         default: []
     })
-    tags: string[];
+    tags?: string[];
 
     //image
     @OneToMany(
         ()=>ProductImage,
         (productImage)=>productImage.product,
-        {cascade:true}
+        {cascade:true, eager: true}
     )
     images?: ProductImage[];
     
@@ -47,15 +47,15 @@ export class Product {
         if (!this.slug) {
             this.slug = this.title;
         }
-        this.slug = this.slug.toLowerCase()
+        this.slug = this.slug?.toLowerCase()
             .replaceAll(' ', '_')
             .replaceAll("'", ""); 
     }
 
     @BeforeUpdate()
     checkSlugUpdate(){
-        this.slug = this.slug.toLowerCase()
-        .replaceAll(' ', '_')
-        .replaceAll("'", "");
+        this.slug = this.slug?.toLowerCase()
+            .replaceAll(' ', '_')
+            .replaceAll("'", "");
     }
 }

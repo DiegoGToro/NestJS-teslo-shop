@@ -4,12 +4,12 @@ import { BeforeInsert } from 'typeorm';
 export class CreateProductDto {
     @IsString()
     @MinLength(1)
-    title: string;
+    title?: string;
 
     @IsNumber()
     @IsPositive()
     //@IsOptional() //El precio no puede ser nulo
-    price: number;
+    price?: number;
 
     @IsString()
     @IsOptional()
@@ -26,15 +26,15 @@ export class CreateProductDto {
 
     @IsString({ each: true })
     @IsArray()
-    sizes: string[]
+    sizes?: string[]
 
     @IsIn(['men','women','kid','unisex'])
-    gender: string;
+    gender?: string;
 
     @IsString( {each: true } )
     @IsArray()
     @IsOptional()
-    tags: string[];
+    tags?: string[];
 
     @IsString( {each: true } )
     @IsArray()

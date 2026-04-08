@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    /*"module": "nodenext", //estrictamente para uso moderno de ESM, pero no es compatible con NestJS
+    "moduleResolution": "nodenext",*/
     "module": "nodenext",
     "moduleResolution": "nodenext",
-    "resolvePackageJsonExports": true,
+    "resolvePackageJsonExports": true, //pensada para proyectos ESM modernos
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,
